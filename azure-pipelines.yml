@@ -1,0 +1,19 @@
+trigger:
+- main  
+pool:
+  name: 'Quiz4AgentPool'  
+steps:
+- script: echo "Starting build process..."
+  displayName: 'Show build start message'
+
+- script: dotnet restore
+  displayName: 'Restore .NET project dependencies'
+
+- script: dotnet build --configuration Release
+  displayName: 'Build .NET project'
+
+- script: dotnet test
+  displayName: 'Test .NET project'
+
+- script: echo "Build and test steps completed."
+  displayName: 'Show completion message'
